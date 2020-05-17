@@ -49,16 +49,16 @@ void process_image_callback(const sensor_msgs::Image img)
             column_idx = i % img.step;
 
             if (column_idx < img.step/3){
-                drive_robot(1, 1);
+                drive_robot(3, 3);
             }
             else if (column_idx < img.step/3 * 2){
-                drive_robot(1, 0);
+                drive_robot(3, 0);
             }
             else{
-                drive_robot(1, -1);
-                isball =true;
-                break;
+                drive_robot(3, -3);
             }
+            isball =true;
+            break;
         }
     }
     if (isball == false)
