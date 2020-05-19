@@ -38,6 +38,7 @@ void process_image_callback(const sensor_msgs::Image img)
     bool isball = false;
     int column_idx = 0;
     int tot = img.height * img.step;
+    double robot_speed = 0.9;
 
 //    ROS_INFO("img step %s", img.step);
 //    ROS_INFO("img height %s", img.height );
@@ -49,13 +50,13 @@ void process_image_callback(const sensor_msgs::Image img)
             column_idx = i % img.step;
 
             if (column_idx < img.step/3){
-                drive_robot(3, 3);
+                drive_robot(0, robot_speed);
             }
             else if (column_idx < img.step/3 * 2){
-                drive_robot(3, 0);
+                drive_robot(robot_speed, 0);
             }
             else{
-                drive_robot(3, -3);
+                drive_robot(0, -robot_speed);
             }
             isball =true;
             break;
